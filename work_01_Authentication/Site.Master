@@ -1,0 +1,90 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="work_01_Authentication.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title><%: Page.Title %></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/fontawesome/font-awesome.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.6.1.js"></script>
+    <style>
+        
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" >
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-info text-white">
+           <div class="container-fluid">
+               <%-- <a class="navbar-brand text-white" href="#">Class Lessons: Authentication</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>--%>
+                <div class="collapse navbar-collapse col" id="navbarNavAltMarkup">
+
+                  
+                    <div class="navbar-nav col-10">
+                        <a class="nav-link active text-white btn btn-dark" href="/Default.aspx">Home</a>
+                        <a class="nav-link text-white btn btn-dark" href="/Members/Teacher.aspx">TeacherInfo</a>
+                        <a class="nav-link text-white btn btn-dark" href="/Members/Student.aspx">student</a>
+                        <a class="nav-link active text-white btn btn-dark" href="/frmDepartment.aspx">Department</a>
+                        <a class="nav-link active text-white btn btn-dark" href="/frmStuff.aspx">stuff</a>
+                        <a class="nav-link active text-white btn btn-danger" href="/Report.aspx">Report</a>
+                        <a class="nav-link active text-white" href="/Default.aspx">ContactUs</a>
+
+                        <div class="nav-item dropdown text-white">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Class Info
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">class Info</a>
+                                <a class="dropdown-item" href="#">six</a>
+                                <a class="dropdown-item" href="#">Seven</a>
+                                <a class="dropdown-item" href="#">Eight</a>
+                                <a class="dropdown-item" href="#">Nine</a>
+                                <a class="dropdown-item" href="#">Ten</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+
+       
+
+                    <div class="navbar-nav col-2">
+                        <%
+                            if (Request.IsAuthenticated)
+                            {
+                        %>
+                        <a class="nav-link text-white " href="#">Hi <%=Page.User.Identity.Name %></a>
+                        <asp:LinkButton ID="logout" runat="server" CssClass="nav-link btn btn-warning" OnClick="logout_Click">logout</asp:LinkButton>
+                        <%
+                            }
+                            else
+                            {
+                        %>
+                        <a class="nav-link text-white btn btn-success " href="frmRegister.aspx">Register</a>
+                        <a class="nav-link text-white btn btn-warning" href="Login.aspx">Login</a>
+                        <%
+                            }
+                        %>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <asp:ContentPlaceHolder ID="main" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="container-fluid bg-info">
+            <p class="text-center text-white">&copy; <%: DateTime.Now.Year %> - Md. Alamin</p>
+        </div>
+    </form>
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="Scripts/bootstrap.js"></script>
+</body>
+</html>
